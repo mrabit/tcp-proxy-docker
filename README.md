@@ -7,7 +7,11 @@
 ## 使用
 
 ```shell
-touch /etc/tcp-proxy.conf
+# 构建docker镜像
+docker build -t tcp-proxy .
+# 创建配置文件
+mv tcp-proxy.conf /etc
+# 运行容器
 docker run --name proxy -d -v /etc/tcp-proxy.conf:/etc/tcp-proxy.conf --net=host tcp-proxy
 ```
 
