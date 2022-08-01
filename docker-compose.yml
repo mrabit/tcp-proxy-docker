@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  tcp_proxy:
+    container_name: tcp_proxy
+    build: .
+    privileged: true
+    volumes:
+      - ./tcp-proxy.conf:/etc/tcp-proxy.conf
+    environment:
+      - TZ=Asia/Shanghai
+    network_mode: "host"
+    restart: always
