@@ -1,4 +1,3 @@
-version: "3.7"
 services:
   tcp_proxy:
     container_name: tcp_proxy
