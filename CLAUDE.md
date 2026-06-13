@@ -29,7 +29,7 @@ docker-compose down
 
 四个核心文件：
 
-- **tcp-proxy.sh** — 主脚本，解析配置文件并为每条规则启动 socat 进程
+- **entrypoint.sh** — 主脚本，解析配置文件并为每条规则启动 socat 进程
 - **tcp-proxy.conf** — 转发规则配置，挂载到容器 `/etc/tcp-proxy.conf`
 - **Dockerfile** — 基于 Alpine 3.19，安装 bash/socat/tzdata（使用 USTC 国内镜像源）
 - **docker-compose.yml** — host 网络模式 + `cap_add: NET_BIND_SERVICE`
