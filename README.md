@@ -27,6 +27,12 @@ docker-compose down
 
 ## 配置说明
 
+首次使用需从示例文件复制配置:
+
+```bash
+cp tcp-proxy.conf.example tcp-proxy.conf
+```
+
 编辑 `tcp-proxy.conf` 文件:
 
 ### 格式 1: 默认转发 TCP+UDP
@@ -94,6 +100,6 @@ docker exec -it tcp_proxy tail -f /var/log/tcp-proxy.log
 ## 注意事项
 
 1. 使用 `host` 网络模式,容器直接使用宿主机网络
-2. 需要 `privileged: true` 权限
+2. 使用 `cap_add: NET_BIND_SERVICE` 绑定低端口
 3. 确保监听端口未被占用
 4. 修改配置后需重启容器: `docker-compose restart`

@@ -34,10 +34,13 @@ start_proxy() {
             socat -d UDP${ip_version}-RECVFROM:${listen_port},fork,reuseaddr UDP${ip_version}-SENDTO:${target_address} &
             log "✓ UDP/IPv${ip_version} :${listen_port} → ${target_address}"
             ;;
-        BOTH|*)
+        BOTH)
             socat -d TCP${ip_version}-LISTEN:${listen_port},fork,reuseaddr TCP${ip_version}:${target_address} &
             socat -d UDP${ip_version}-RECVFROM:${listen_port},fork,reuseaddr UDP${ip_version}-SENDTO:${target_address} &
             log "✓ TCP+UDP/IPv${ip_version} :${listen_port} → ${target_address}"
+            ;;
+        *)
+            log "✗ 未知协议: $protocol"
             ;;
     esac
 }
